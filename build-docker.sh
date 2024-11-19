@@ -104,6 +104,11 @@ case $(uname -m) in
     binfmt_misc_required=0
     ;;
 esac
+case $(uname -s) in
+  Darwin)
+    binfmt_misc_required=0
+    ;;
+esac
 
 # Check if qemu-aarch64-static and /proc/sys/fs/binfmt_misc are present
 if [[ "${binfmt_misc_required}" == "1" ]]; then
