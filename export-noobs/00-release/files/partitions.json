@@ -10,7 +10,7 @@
             "sha256sum": "BOOT_SHASUM"
         },
         {
-            "filesystem_type": "ext4",
+            "filesystem_type": "btrfs",
             "label": "root",
             "mkfs_options": "-O ^huge_file",
             "partition_size_nominal": ROOT_NOM,

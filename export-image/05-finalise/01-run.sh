@@ -95,8 +95,14 @@ fi
 
 ROOT_DEV="$(awk "\$2 == \"${ROOTFS_DIR}\" {print \$1}" /etc/mtab)"
 
+cd "${ROOTFS_DIR}"
+mkdir btrfs-zero
+btrfs property set btrfs-zero compression none
+cat /dev/zero > btrfs-zero/zero 2>&1 /dev/null || true
+rm -r btrfs-zero
+cd -
+
 unmount "${ROOTFS_DIR}"
-zerofree "${ROOT_DEV}"
 
 unmount_image "${IMG_FILE}"
 
